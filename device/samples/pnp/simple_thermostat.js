@@ -24,6 +24,7 @@ const idScope = process.env.IOTHUB_DEVICE_DPS_ID_SCOPE;
 const registrationId = process.env.IOTHUB_DEVICE_DPS_DEVICE_ID;
 const symmetricKey = process.env.IOTHUB_DEVICE_DPS_DEVICE_KEY;
 const useDps = process.env.IOTHUB_DEVICE_SECURITY_TYPE;
+console.log(symmetricKey)
 
 const modelIdObject = { modelId: 'dtmi:com:example:Thermostat;1' };
 const telemetrySendInterval = 10000;
@@ -157,12 +158,13 @@ const attachExitHandler = async (deviceClient) => {
 };
 
 async function sendTelemetry(deviceClient, index) {
-  console.log('Sending telemetry message %d...', index);
+  
   const msg = new Message(
     JSON.stringify(
       deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
     )
   );
+  console.log(`Sending telemetry message ${index}... temperature: ${deviceTemperatureSensor.currTemp.toFixed(2)}`);
   msg.contentType = 'application/json';
   msg.contentEncoding = 'utf-8';
   await deviceClient.sendEvent(msg);
@@ -252,3 +254,22 @@ async function main() {
 }
 
 main().then(()=> console.log('executed sample')).catch((err) => console.log('error', err));
+
+
+//az iot central device compute-device-key  --device-id 1o8n1dpghsw --pk TNHa7ATsY54FJU52Q4N9HDLpaA0DW0MP7/wJP3UHi6jgNEuejpNDBcXdRefaW2Vq7vUv8he11c2jc6jlHMJiWA==
+
+// output  mK8s1l6JBKQ4gp8CfE8UwUr1B/nOqsjKV7iYm6D7BSU=
+
+// az iot central device compute-device-key  --device-id 1scbnqdgphl --pk TNHa7ATsY54FJU52Q4N9HDLpaA0DW0MP7/wJP3UHi6jgNEuejpNDBcXdRefaW2Vq7vUv8he11c2jc6jlHMJiWA==
+// ngDZGp8fghgOSALthDr9qdwr0K76JnIiCZOwYaZScS8=
+// output yPETYM+co+rMu0NUMn6TGcmFbLRD3riczzJuGmIW/ws=
+
+
+// scope 0ne001C97C5
+// group id TNHa7ATsY54FJU52Q4N9HDLpaA0DW0MP7/wJP3UHi6jgNEuejpNDBcXdRefaW2Vq7vUv8he11c2jc6jlHMJiWA==
+
+// export IOTHUB_DEVICE_SECURITY_TYPE=DPS
+// export IOTHUB_DEVICE_DPS_ID_SCOPE=0ne001C97C5
+// export IOTHUB_DEVICE_DPS_DEVICE_ID=1scbnqdgphl
+// export IOTHUB_DEVICE_DPS_DEVICE_KEY=ngDZGp8fghgOSALthDr9qdwr0K76JnIiCZOwYaZScS8=
+// export IOTHUB_DEVICE_DPS_ENDPOINT=global.azure-devices-provisioning.net
