@@ -1,0 +1,107 @@
+
+  {
+    "@id": "dtmi:iotapp:soilManual5vc;4",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "Temperature"
+        ],
+        "description": {
+          "en": "Temperature in degrees Celsius."
+        },
+        "displayName": {
+          "en": "Temperature"
+        },
+        "name": "temperature",
+        "schema": "double",
+        "unit": "degreeCelsius"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "Humidity"
+        ],
+        "description": {
+          "en": "Humidity"
+        },
+        "displayName": {
+          "en": "Target Temperature"
+        },
+        "name": "humidity",
+        "schema": "double"
+      },
+      {
+        "@type": [
+          "Telemetry",
+          "PH"
+        ],
+        "description": {
+          "en": "PH value."
+        },
+        "displayName": {
+          "en": "PH值"
+        },
+        "name": "ph",
+        "schema": "double"
+      },
+      {
+        "@type": "Command",
+        "description": {
+          "en": "This command returns the latest report from the specified time to the current time."
+        },
+        "displayName": {
+          "en": "Get latest report."
+        },
+        "name": "getLatestReport",
+        "response": {
+          "@type": "CommandPayload",
+          "displayName": {
+            "en": "Report"
+          },
+          "name": "soilReport",
+          "schema": {
+            "@type": "Object",
+            "fields": [
+              {
+                "displayName": {
+                  "en": "Temperature"
+                },
+                "name": "temperature",
+                "schema": "double"
+              },
+              {
+                "displayName": {
+                  "en": "Humidity"
+                },
+                "name": "humidity",
+                "schema": "double"
+              },
+              {
+                "displayName": {
+                  "en": "PH"
+                },
+                "name": "ph",
+                "schema": "double"
+              },
+              {
+                "displayName": {
+                  "en": "lumination"
+                },
+                "name": "lumination",
+                "schema": "double"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "displayName": {
+      "en": "soilManual"
+    },
+    "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+    ]
+  }

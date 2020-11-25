@@ -6,8 +6,8 @@
   "author": "Microsoft Corp.",
   "license": "MIT",
   "dependencies": {
-    "azure-iot-device": "1.17.3",
     "azure-iot-common": "1.12.7",
+    "azure-iot-device": "1.17.3",
     "azure-iot-device-amqp": "1.13.3",
     "azure-iot-device-http": "1.13.3",
     "azure-iot-device-mqtt": "1.15.3",
@@ -15,7 +15,9 @@
     "azure-iot-provisioning-device-mqtt": "1.7.7",
     "azure-iot-security-symmetric-key": "1.7.7",
     "es5-shim": "^4.5.12",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "unirest": "^0.6.0",
+    "yargs": "^13.2.4"
   },
   "devDependencies": {
     "jshint": "^2.10.2"
