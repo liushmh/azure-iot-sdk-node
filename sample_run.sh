@@ -10,4 +10,7 @@ export IOTHUB_DEVICE_DPS_ENDPOINT=global.azure-devices-provisioning.net
 node $1 c $3
 
 # ./sample_run.sh ./device/samples/pnp/simple_thermostat.js 2gos8xvnx0v
-# ./sample_run.sh ./device/samples/pnp/simulate_soil_sensor.js vgc0dqerar haikou
+# ./sample_run.sh ./device/samples/pnp/simulate_soil_sensor.js 1u84d1iz0f haikou
+
+
+az iot central device compute-device-key  --device-id 1u84d1iz0f --pk TNHa7ATsY54FJU52Q4N9HDLpaA0DW0MP7/wJP3UHi6jgNEuejpNDBcXdRefaW2Vq7vUv8he11c2jc6jlHMJiWA== 

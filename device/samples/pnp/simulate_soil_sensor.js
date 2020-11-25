@@ -29,7 +29,7 @@ const symmetricKey = process.env.IOTHUB_DEVICE_DPS_DEVICE_KEY;
 const useDps = process.env.IOTHUB_DEVICE_SECURITY_TYPE;
 
 const modelIdObject = { modelId: 'dtmi:com:example:Thermostat;1' };
-const telemetrySendInterval = 3000;
+const telemetrySendInterval = 30000;
 const deviceSerialNum = 'jfa9a2c8808i';
 
 // 云的密度系数0.8，日照时间 * 云的覆盖比例，约等于光照时长
@@ -127,7 +127,6 @@ class SoilSensor {
 }
 
 async function main(city) {
-  let intervalToken;
 
   const soilSensor = new SoilSensor(city);
   const commandReport = 'getLatestReport';
@@ -200,6 +199,8 @@ async function main(city) {
     });
   };
 
+  let intervalToken, apiIntervalToken;
+
   const attachExitHandler = async (deviceClient) => {
     const standardInput = process.stdin;
     standardInput.setEncoding('utf-8');
@@ -208,6 +209,7 @@ async function main(city) {
       if (data === 'q\n' || data === 'Q\n') {
         console.log('Clearing intervals and exiting sample.');
         clearInterval(intervalToken);
+        clearInterval(apiIntervalToken);
         deviceClient.close();
         process.exit();
       } else {
@@ -287,8 +289,8 @@ async function main(city) {
       index += 1;
     }, telemetrySendInterval);
 
-    const updateAPIInterval = 60;
-    intervalToken = setInterval(() => {
+    const updateAPIInterval = 1800;
+    apiIntervalToken = setInterval(() => {
       soilSensor.updateData();
     }, updateAPIInterval * 1000);
 
