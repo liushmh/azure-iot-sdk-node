@@ -3,7 +3,7 @@
 
 'use strict';
 
-const { random } = require('lodash');
+const { random, min } = require('lodash');
 
 const Protocol = require('azure-iot-device-mqtt').Mqtt;
 const ProvProtocol = require('azure-iot-provisioning-device-mqtt').Mqtt;
@@ -52,6 +52,11 @@ class DisplayValues{
   }
 
   add(val){
+    if(this.count == 1)
+    {
+      this.max = val;
+      this.min = val;
+    }
     this.count += 1;
     this.val = val;
     if(this.max < val) this.max = val;
@@ -72,12 +77,25 @@ class SoilSensor {
     this.numberOfTemperatureReadings = 1;
   }
 
+  // todo: add scheme json on the right
   getCurrentWeatherObject() {
     return {
-      temperature: this.reportTemp,
-      humidity: this.currHumidity,
-      lumination: this.currLumination,
-      ph: this.ph
+      temperature: this.tempValues.val,
+      avgTemperature: this.tempValues.avg,
+      minTemperature: this.tempValues.min,
+      maxTemperature: this.tempValues.max,
+
+      humidity: this.humValues.val,
+      avgHumidity: this.humValues.avg,
+      minHumidity: this.humValues.min,
+      maxHumidity: this.humValues.max,
+
+      lumination: this.lumValues.val,
+      avgLumination: this.lumValues.avg,
+      minLumination: this.lumValues.min,
+      maxLumination: this.lumValues.max,
+
+      ph: this.phValues.val
     };
   }
 
@@ -92,18 +110,18 @@ class SoilSensor {
   }
 
   updateSensor() {
-    this.tempValues.add(this.currTemp + getRandom(0.1));
-    this.humValues.add(getRandom(1));
+    this.tempValues.add(this.tempValues.val + getRandom(0.1));
+    this.humValues.add(this.humValues.val + getRandom(1));
     this.numberOfTemperatureReadings += 1;
     return this;
   }
 
   getLatestReport() {
     return {
-      temperature: this.reportTemp,
-      humidity: this.currHumidity,
-      lumination: this.currLumination,
-      ph: this.ph
+      temperature: this.tempValues.val,
+      humidity: this.humValues.val,
+      lumination: this.lumValues.val,
+      ph: this.phValues.val
     };
   }
 }

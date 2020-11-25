@@ -1,6 +1,6 @@
 [
     {
-      "@id": "dtmi:Espressif:SoilSensorWorking;5",
+      "@id": "dtmi:Espressif:SoilSensorWorking;6",
       "@type": "Interface",
       "contents": [
         {
@@ -19,6 +19,51 @@
           "unit": "degreeCelsius"
         },
         {
+            "@type": [
+              "Telemetry",
+              "Temperature"
+            ],
+            "description": {
+              "en": "Temperature in degrees Celsius."
+            },
+            "displayName": {
+              "en": "Temperature"
+            },
+            "name": "avgTemperature",
+            "schema": "double",
+            "unit": "degreeCelsius"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "Temperature"
+            ],
+            "description": {
+              "en": "Temperature in degrees Celsius."
+            },
+            "displayName": {
+              "en": "Temperature"
+            },
+            "name": "minTemperature",
+            "schema": "double",
+            "unit": "degreeCelsius"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "Temperature"
+            ],
+            "description": {
+              "en": "Temperature in degrees Celsius."
+            },
+            "displayName": {
+              "en": "Temperature"
+            },
+            "name": "maxTemperature",
+            "schema": "double",
+            "unit": "degreeCelsius"
+          },
+        {
           "@type": [
             "Telemetry",
             "Humidity"
@@ -27,11 +72,53 @@
             "en": "Humidity"
           },
           "displayName": {
-            "en": "Target Temperature"
+            "en": "humidity"
           },
           "name": "humidity",
           "schema": "double"
         },
+        {
+            "@type": [
+              "Telemetry",
+              "Humidity"
+            ],
+            "description": {
+              "en": "Humidity"
+            },
+            "displayName": {
+              "en": "humidity"
+            },
+            "name": "avgHumidity",
+            "schema": "double"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "Humidity"
+            ],
+            "description": {
+              "en": "Humidity"
+            },
+            "displayName": {
+              "en": "humidity"
+            },
+            "name": "minHumidity",
+            "schema": "double"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "Humidity"
+            ],
+            "description": {
+              "en": "Humidity"
+            },
+            "displayName": {
+              "en": "humidity"
+            },
+            "name": "maxHumidity",
+            "schema": "double"
+          },
         {
             "@type": [
               "Telemetry",
@@ -44,6 +131,48 @@
               "en": "lumination"
             },
             "name": "lumination",
+            "schema": "double"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "Humidity"
+            ],
+            "description": {
+              "en": "Lumination"
+            },
+            "displayName": {
+              "en": "lumination"
+            },
+            "name": "avgLumination",
+            "schema": "double"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "Humidity"
+            ],
+            "description": {
+              "en": "Lumination"
+            },
+            "displayName": {
+              "en": "lumination"
+            },
+            "name": "minLumination",
+            "schema": "double"
+          },
+          {
+            "@type": [
+              "Telemetry",
+              "Humidity"
+            ],
+            "description": {
+              "en": "Lumination"
+            },
+            "displayName": {
+              "en": "lumination"
+            },
+            "name": "maxLumination",
             "schema": "double"
           },
         {

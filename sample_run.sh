@@ -10,4 +10,4 @@ export IOTHUB_DEVICE_DPS_ENDPOINT=global.azure-devices-provisioning.net
 node $1 c $3
 
 # ./sample_run.sh ./device/samples/pnp/simple_thermostat.js 2gos8xvnx0v
-# ./sample_run.sh ./device/samples/pnp/simulate_soil_sensor.js p5i38a3us9 toronto
+# ./sample_run.sh ./device/samples/pnp/simulate_soil_sensor.js vgc0dqerar haikou
