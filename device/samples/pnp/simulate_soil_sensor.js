@@ -289,7 +289,7 @@ async function main(city) {
       index += 1;
     }, telemetrySendInterval);
 
-    const updateAPIInterval = 1800;
+    const updateAPIInterval = 18000;
     apiIntervalToken = setInterval(() => {
       soilSensor.updateData();
     }, updateAPIInterval * 1000);
